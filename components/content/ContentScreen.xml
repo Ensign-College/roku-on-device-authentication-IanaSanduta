@@ -40,7 +40,7 @@
         height = "720"
         width = "1280"
 	loop = "false"
-        visible = "false"
+        visible = "true"
     />
 
     <!-- Shaded overhang to display the focused content in the RowList -->

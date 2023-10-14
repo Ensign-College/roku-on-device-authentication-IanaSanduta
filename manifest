@@ -13,4 +13,4 @@ splash_min_time=1000
 # own query to own server, this value is just for
 # the purpose of this sample
 
-bs_const=sampleHardCodedValues=True
+bs_const=sampleHardCodedValues=False

@@ -1,3 +1,4 @@
+
 sub Main()
     screen = CreateObject("roSGScreen")
     m.port = CreateObject("roMessagePort")
@@ -11,21 +12,36 @@ sub Main()
     ' Create a TCP server socket and set up the server
     tcpListen = CreateObject("roStreamSocket")
     messagePort = CreateObject("roMessagePort")
+    sendAddress = CreateObject("roSocketAddress")
+
+    ' Set the address of the server you want to connect to
+    sendAddress.SetAddress("devsocket.stedi.me:54321")
+    socket = CreateObject("roStreamSocket")
+    socket.setSendToAddress(sendAddress)
 
     ' Specify the IP address and port for the server
     addr = CreateObject("roSocketAddress")
-    addr.setAddress("192.168.0.182") ' Change the IP address and port as needed
-    addr.setPort(80)
+    addr.setAddress("devsocket.stedi.me:54321") ' Change the IP address and port as needed
+
     tcpListen.setAddress(addr)
 
     tcpListen.setMessagePort(messagePort)
     tcpListen.notifyReadable(true)
     tcpListen.listen(4)
 
+
     if not tcpListen.eOK()
         print "Error creating listen socket"
         return
     end if
+
+    if socket.Connect()
+        print "Connected Successfully"
+    else
+        print "Connection Failed"
+    end if
+
+
 
     ' Dictionary to store client connections
     connections = CreateObject("roAssociativeArray")
@@ -82,27 +98,30 @@ sub Main()
         connections[id].close()
     end for
 end sub
-' sub Main()
-'     screen = CreateObject("roSGScreen")
-'     m.port = CreateObject("roMessagePort")
-'     screen.setMessagePort(m.port)
-'     scene = screen.CreateScene("MainScene")
-'     screen.show()
-'     m.global = screen.getGlobalNode()
 
-'     ' m.global.addField("config", "assocarray", false)
-'     ' m.global.config = {
-'     '     publisherEntitlement: true,
-'     '     publisherTokenKey: "8ZQEDDR8AWVJF8AH",
-'     '     publisherRefreshToken: "MSEFAJ7A54SE3LBE",
-'     '     publisherEndPoint: "sample.com/endpoint/1234",
-'     ' }
 
-'     while(true)
-'         msg = wait(0, m.port)
-'         msgType = type(msg)
-'         if msgType = "roSGScreenEvent"
-'             if msg.isScreenClosed() then return
-'         end if
-'     end while
-' end sub
+
+' ' sub Main()
+' '     screen = CreateObject("roSGScreen")
+' '     m.port = CreateObject("roMessagePort")
+' '     screen.setMessagePort(m.port)
+' '     scene = screen.CreateScene("MainScene")
+' '     screen.show()
+' '     m.global = screen.getGlobalNode()
+
+' '     ' m.global.addField("config", "assocarray", false)
+' '     ' m.global.config = {
+' '     '     publisherEntitlement: true,
+' '     '     publisherTokenKey: "8ZQEDDR8AWVJF8AH",
+' '     '     publisherRefreshToken: "MSEFAJ7A54SE3LBE",
+' '     '     publisherEndPoint: "sample.com/endpoint/1234",
+' '     ' }
+
+' '     while(true)
+' '         msg = wait(0, m.port)
+' '         msgType = type(msg)
+' '         if msgType = "roSGScreenEvent"
+' '             if msg.isScreenClosed() then return
+' '         end if
+' '     end while
+' ' end sub

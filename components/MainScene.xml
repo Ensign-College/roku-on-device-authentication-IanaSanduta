@@ -12,7 +12,7 @@
     </interface>
 
     <children>
-        <group id="productSelectScreen" visible="false">
+        <group id="productSelectScreen" visible="true">
             <MarkupGrid
             id="productGrid"
             itemComponentName="ChannelStoreProduct"
@@ -33,7 +33,7 @@
         <ContentScreen
           id = "contentScreen"
           translation = "[0,120]"
-          visible = "false">
+          visible = "true">
         </ContentScreen>
 
         <!-- Two labels are overhang -->
@@ -45,7 +45,7 @@
             horizAlign = "right"
             text = "Press * to delete the sample access token in the sample registry"
             font = "font:SmallestSystemFont"
-            visible = "false"
+            visible = "true"
             translation = "[860,35]"
         />
 
@@ -57,14 +57,14 @@
             horizAlign = "left"
             text = "Select a plan, then press OK to purchase"
             font = "font:LargeBoldSystemFont"
-            visible = "false"
+            visible = "true"
             translation = "[50,35]"
         />
 
         <Group
           id = "landingScreen"
           translation = "[0,0]"
-          visible = "false">
+          visible = "true">
           <Poster
             id="landingPoster"
             uri="pkg:/images/roku-developers-top.jpg"
@@ -84,12 +84,12 @@
         <SignInScreen
           id = "signInScreen"
           translation = "[0,0]"
-          visible = "false" />
+          visible = "true" />
 
         <SignUpScreen
           id = "signUpScreen"
           translation = "[0,0]"
-          visible = "false" />
+          visible = "true" />
     </children>
 
 </component>

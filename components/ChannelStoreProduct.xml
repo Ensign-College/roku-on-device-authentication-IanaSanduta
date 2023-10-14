@@ -36,7 +36,7 @@
   width="350"
   height="150"
   uri="pkg:/images/purchased_poster.png"
-  visible="false"
+  visible="true"
 />
 <LayoutGroup layoutDirection="vert" vertAlignment="top" itemSpacings="30" >
     <LayoutGroup layoutDirection="horiz" horizAlignment="center" itemSpacings="[15]">
